@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style type="text/css">
+        #network {
+            width: 1000px;
+            height: 500px;
+            border: 1px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D</title>
+</head>
+
+<body>
+    <div id="network"></div>
+    <script type="text/javascript">
+        var nodes = new vis.DataSet([
+            {
+                id: 0,
+                label: "In",
+
+            },
+            {
+                id: 1,
+                label: "1",
+
+            },
+            {
+                id: 2,
+                label: "2",
+
+            },
+            {
+                id: 3,
+                label: "3",
+
+            },
+            {
+                id: 4,
+                label: "4",
+
+            },
+            {
+                id: 5,
+                label: "5",
+
+            },
+            {
+                id: 6,
+                label: "Out",
+
+            }
+        ])
+        var edges = new vis.DataSet([
+            { from: 0, to: 1, arrows: "middle", label: "a" },
+            { from: 1, to: 2, arrows: "middle", label: "b" },
+            { from: 2, to: 5, arrows: "middle", label: "c" },
+            { from: 3, to: 4, arrows: "middle", label: "d" },
+            { from: 5, to: 6, arrows: "middle", label: "e" },
+            { from: 5, to: 3, arrows: "middle", label: "f" },
+            { from: 1, to: 3, arrows: "middle", label: "g" },
+            { from: 2, to: 3, arrows: "middle", label: "h" },
+
+
+
+        ])
+        var container = document.getElementById("network")
+        var data = {
+            nodes: nodes,
+            edges: edges
+        }
+        var options = {
+            layout: {
+                autoResize: true,
+                improvedLayout: true,
+                hierarchical: {
+                    direction: "LR",
+                    sortMethod: "hubsize"
+                }
+
+            }
+        };
+        var network = new vis.Network(container, data, options)
+    </script>
+</body>
+
+</html>
